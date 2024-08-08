@@ -3,6 +3,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class QueryController {
 
@@ -26,8 +28,12 @@ public class QueryController {
         return "The Client " + nameOfClient + " is " + ageOfClient + " years old.";
     }
 
+    //3. example @GetMapping return the list, http://localhost:8080/v2/clients/list?surname=Katerina,Lukas
 
+    @GetMapping("/v2/clients/list")
+        public String listOfClients(@RequestParam (name = "surname") List<String> listOfClients)
+        {
+            return listOfClients.toString();
+        }
+    }
 
-
-
-}
