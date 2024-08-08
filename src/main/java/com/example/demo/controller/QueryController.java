@@ -7,8 +7,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class QueryController {
 
     @GetMapping("/v1/name")
-    public String sayName(@RequestParam String surname) {
-      return "Say hello to " + surname;
+    public String sayWelcomeClient(@RequestParam(value = "FullName", required = false) String NameOfClient) {
+      //return "Hello new Client, " + NameOfClient;
+        if(NameOfClient == null) {
+          return "Welcome new client!";
+      } else {
+          return "Welcome new client, " + NameOfClient;
+      }
     }
+
+
+
+
 
 }
